@@ -20,7 +20,6 @@ License:	GPL
 Url:		http://cpu.sourceforge.net
 Group:		System/Base
 BuildRequires:	openldap-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 CPU is an LDAP user management tool written in C and loosely based
