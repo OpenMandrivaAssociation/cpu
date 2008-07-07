@@ -16,6 +16,7 @@ Source0:	http://prdownloads.sourceforge.net/cpu/cpu-%version.tar.bz2
 # first hunk taken from the debian unstable package,
 # author is Guido Trotter <ultrotter@debian.org>
 Patch:		cpu-1.4.3-gcc4.patch.bz2
+Patch1:     cpu-1.4.3-fix_open_usage.diff
 License:	GPL
 Url:		http://cpu.sourceforge.net
 Group:		System/Base
@@ -58,6 +59,7 @@ doing the administration.
 %prep
 %setup -q
 %patch -p1 -b .gcc4
+%patch1 -p0
 
 %build
 %configure
