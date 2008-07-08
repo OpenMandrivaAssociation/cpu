@@ -8,6 +8,10 @@
 %define	libname %mklibname %name %lib_major
 %define	libnamedev %mklibname %name %lib_major -d
 
+# (misc) disabled as plugins do not link otherwise
+%define _disable_ld_no_undefined 1
+
+
 Summary:	Ldap aware command like useradd, userdel, usermod and others
 Name:		%{name}
 Version:	%{version}
@@ -17,6 +21,7 @@ Source0:	http://prdownloads.sourceforge.net/cpu/cpu-%version.tar.bz2
 # author is Guido Trotter <ultrotter@debian.org>
 Patch:		cpu-1.4.3-gcc4.patch.bz2
 Patch1:     cpu-1.4.3-fix_open_usage.diff
+Patch2:     cpu-1.4.3-fix_makefile.diff
 License:	GPL
 Url:		http://cpu.sourceforge.net
 Group:		System/Base
@@ -60,8 +65,11 @@ doing the administration.
 %setup -q
 %patch -p1 -b .gcc4
 %patch1 -p0
+%patch2 -p0
 
 %build
+# for patch 2
+aclocal && autoconf && automake
 %configure
 %make
 
