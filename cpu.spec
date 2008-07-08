@@ -22,7 +22,7 @@ Source0:	http://prdownloads.sourceforge.net/cpu/cpu-%version.tar.bz2
 Patch:		cpu-1.4.3-gcc4.patch.bz2
 Patch1:     cpu-1.4.3-fix_open_usage.diff
 Patch2:     cpu-1.4.3-fix_makefile.diff
-License:	GPL
+License:	GPLv2+
 Url:		http://cpu.sourceforge.net
 Group:		System/Base
 BuildRequires:	openldap-devel
