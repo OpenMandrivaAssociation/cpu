@@ -1,6 +1,6 @@
 %define	name	cpu
 %define version 1.4.3
-%define release %mkrel 6
+%define release %mkrel 7
 
 %define	lib_name_orig lib%{name}
 
