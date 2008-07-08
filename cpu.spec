@@ -19,7 +19,7 @@ Release:	%{release}
 Source0:	http://prdownloads.sourceforge.net/cpu/cpu-%version.tar.bz2
 # first hunk taken from the debian unstable package,
 # author is Guido Trotter <ultrotter@debian.org>
-Patch:		cpu-1.4.3-gcc4.patch.bz2
+Patch:		cpu-1.4.3-gcc4.patch
 Patch1:     cpu-1.4.3-fix_open_usage.diff
 Patch2:     cpu-1.4.3-fix_makefile.diff
 License:	GPLv2+
