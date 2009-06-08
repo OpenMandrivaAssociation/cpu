@@ -1,16 +1,10 @@
 %define	name	cpu
 %define version 1.4.3
-%define release %mkrel 7
-
-%define	lib_name_orig lib%{name}
+%define release %mkrel 8
 
 %define	lib_major 0
 %define	libname %mklibname %name %lib_major
-%define	libnamedev %mklibname %name %lib_major -d
-
-# (misc) disabled as plugins do not link otherwise
-%define _disable_ld_no_undefined 1
-
+%define	libnamedev %mklibname %name -d
 
 Summary:	Ldap aware command like useradd, userdel, usermod and others
 Name:		%{name}
@@ -19,13 +13,15 @@ Release:	%{release}
 Source0:	http://prdownloads.sourceforge.net/cpu/cpu-%version.tar.bz2
 # first hunk taken from the debian unstable package,
 # author is Guido Trotter <ultrotter@debian.org>
-Patch:		cpu-1.4.3-gcc4.patch
-Patch1:     cpu-1.4.3-fix_open_usage.diff
-Patch2:     cpu-1.4.3-fix_makefile.diff
+Patch0:		cpu-1.4.3-gcc4.patch
+Patch1: 	cpu-1.4.3-fix_open_usage.diff
+Patch2:		cpu-1.4.3-fix_makefile.diff
+Patch3:		cpu-1.4.3-linkage.patch
 License:	GPLv2+
 Url:		http://cpu.sourceforge.net
 Group:		System/Base
 BuildRequires:	openldap-devel
+Conflicts:	%{_lib}cpu0-devel < 1.4.3-8
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -52,7 +48,8 @@ doing the administration.
 Summary:	Ldap aware command like useradd, userdel, usermod and others
 Group:		System/Base
 Requires:	%libname = %{version}
-Provides:	lib%{name}-devel %{name}-devel
+Provides:	%{name}-devel = {%version}-%{release}
+Obsoletes:	%{_lib}cpu0-devel < 1.4.3-8
 
 %description -n %libnamedev
 CPU is an LDAP user management tool written in C and loosely based
@@ -63,14 +60,14 @@ doing the administration.
 
 %prep
 %setup -q
-%patch -p1 -b .gcc4
+%patch0 -p1 -b .gcc4
 %patch1 -p0
 %patch2 -p0
+%patch3 -p0
 
 %build
-# for patch 2
-aclocal && autoconf && automake
-%configure
+autoreconf -fi
+%configure2_5x
 %make
 
 %install
@@ -96,14 +93,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/*
 %{_mandir}/man5/*
 %{_sbindir}/cpu
+%{_libdir}/libcpu_ldap.so
 %config(noreplace) %{_sysconfdir}/cpu.conf
 
 %files -n %libname
 %defattr(-, root, root)
-%_libdir/*.so.*
+%_libdir/*.so.%{lib_major}*
 
 %files -n %libnamedev
 %defattr(-, root, root)
-%{_libdir}/*.so
+%{_libdir}/libcputil.so
 %_libdir/*.*a
 
