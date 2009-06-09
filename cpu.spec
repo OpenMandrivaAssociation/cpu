@@ -1,6 +1,6 @@
 %define	name	cpu
 %define version 1.4.3
-%define release %mkrel 8
+%define release %mkrel 9
 
 %define	lib_major 0
 %define	libname %mklibname %name %lib_major
@@ -48,7 +48,7 @@ doing the administration.
 Summary:	Ldap aware command like useradd, userdel, usermod and others
 Group:		System/Base
 Requires:	%libname = %{version}
-Provides:	%{name}-devel = {%version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}cpu0-devel < 1.4.3-8
 
 %description -n %libnamedev
