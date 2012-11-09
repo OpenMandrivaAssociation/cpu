@@ -1,0 +1,12 @@
+Index: configure.ac
+===================================================================
+--- configure.ac
++++ configure.ac	2008-07-08 07:19:39.000000000 +0200
+@@ -224,6 +224,7 @@
+ 
+ AM_CONDITIONAL(HAVE_LDAP, test x$ldap = xtrue)
+ AM_CONDITIONAL(HAVE_PASSWD, test x$flatfile = xtrue)
++AC_SUBST(LBFLAGS)
+ 
+ AC_CONFIG_FILES(Makefile
+ doc/Makefile

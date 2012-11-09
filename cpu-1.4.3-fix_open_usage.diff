@@ -1,0 +1,13 @@
+Index: src/util/fileaction.c
+===================================================================
+--- src/util/fileaction.c
++++ src/util/fileaction.c	2008-07-07 16:04:31.000000000 +0200
+@@ -197,7 +197,7 @@
+ 		}
+ 	      close (fd1);
+ 
+-	      if ((fd2 = open (homefile, O_CREAT | O_EXCL | O_WRONLY)) == -1)
++	      if ((fd2 = open (homefile, O_CREAT | O_EXCL | O_WRONLY, S_IRWXU)) == -1)
+ 		{
+ 		  perror ("open");
+ 		  free (data);

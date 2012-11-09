@@ -1,0 +1,37 @@
+--- cpu-1.4.3/src/plugins/ldap/commandline.c~	2004-01-12 03:31:02.000000000 -0200
++++ cpu-1.4.3/src/plugins/ldap/commandline.c	2005-09-07 18:17:57.000000000 -0300
+@@ -83,7 +83,7 @@
+   if (passent == NULL)
+     return -1;
+   bzero (passent, sizeof (struct cpass));
+-  (int) passent->sp_lstchg = passent->sp_min = passent->sp_max = -10;
++  passent->sp_lstchg = passent->sp_min = passent->sp_max = -10;
+   passent->sp_warn = passent->sp_inact = passent->sp_expire = -10;
+   passent->sp_flag = -10;
+   passent->pw_gid = -10;
+--- cpu-1.4.3/src/plugins/ldap/ld.c.gcc4	2004-01-12 02:47:37.000000000 -0200
++++ cpu-1.4.3/src/plugins/ldap/ld.c	2005-09-07 18:53:45.000000000 -0300
+@@ -771,6 +771,7 @@
+     NULL
+   };
+   char *gid = NULL;
++  char **vals = NULL;
+ 
+   cn = cfg_get_str ("LDAP", "GROUP_CN_STRING");
+   if (cn == NULL)
+@@ -803,10 +804,12 @@
+     return -10;
+   if (gid != NULL)
+     {
+-      gid = ldap_get_values (ld, pos, gid)[0];
+-      if (gid != NULL)
++      vals = ldap_get_values (ld, pos, gid);
++      if (vals && vals[0]) {
++	gid = strdup(vals[0]);
++	ldap_value_free(vals);
+ 	return atoi (gid);
+-      else
++      } else
+ 	return -10;
+     }
+   else

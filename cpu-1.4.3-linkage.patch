@@ -1,0 +1,22 @@
+--- src/plugins/ldap/Makefile.am~	2003-10-12 08:33:41.000000000 +0200
++++ src/plugins/ldap/Makefile.am	2009-06-09 00:38:44.000000000 +0200
+@@ -3,7 +3,7 @@
+ lib_LTLIBRARIES = libcpu_ldap.la
+ 
+ LDADD = $(top_builddir)/src/util/libcputil.la
+-libcpu_ldap_la_LDFLAGS = @LBFLAGS@
++libcpu_ldap_la_LDFLAGS = @LBFLAGS@ -module -avoid-version
+ 
+ libcpu_ldap_la_SOURCES = \
+  ldap_errors.c \
+--- src/plugins/passwd/Makefile.am~	2003-02-18 00:26:20.000000000 +0100
++++ src/plugins/passwd/Makefile.am	2009-06-09 00:39:03.000000000 +0200
+@@ -3,7 +3,7 @@
+ lib_LTLIBRARIES = libcpu_passwd.la
+ 
+ LDADD = $(top_builddir)/src/util/libcputil.la
+-libcpu_passwd_la_LDFLAGS = @LBFLAGS@
++libcpu_passwd_la_LDFLAGS = @LBFLAGS@ -module -avoid-version
+ 
+ libcpu_passwd_la_SOURCES = \
+  commandline.c \
