@@ -105,3 +105,76 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libcputil.so
 %_libdir/*.*a
 
+
+
+%changelog
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 1.4.3-10mdv2011.0
++ Revision: 617436
+- the mass rebuild of 2010.0 packages
+
+* Tue Jun 09 2009 Funda Wang <fwang@mandriva.org> 1.4.3-9mdv2010.0
++ Revision: 384205
+- fix provides
+
+* Tue Jun 09 2009 Funda Wang <fwang@mandriva.org> 1.4.3-8mdv2010.0
++ Revision: 384166
+- fix module build
+- move module into main package
+
+* Tue Jul 08 2008 Michael Scherer <misc@mandriva.org> 1.4.3-7mdv2009.0
++ Revision: 232696
+- bunzip patch
+- fix license
+- fix build, by using _disable_ld_no_undefined ( as plugins do not build without it )
+  and by patching their makefile ( seems that LBFLAGS was not expanded in Makefile.am )
+- fix build
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Mon Dec 17 2007 Thierry Vignaud <tv@mandriva.org> 1.4.3-6mdv2008.1
++ Revision: 123432
+- kill re-definition of %%buildroot on Pixel's request
+- import cpu
+
+
+* Fri Nov 18 2005 Thierry Vignaud <tvignaud@mandriva.com> 1.4.3-6mdk
+- rebuild against openssl-0.9.8
+
+* Wed Sep 07 2005 Andreas Hasenack <andreas@mandriva.com> 1.4.3-5mdk
+- added patch to build with gcc4 (first hunk taken from the 
+  debian unstable package)
+- rebuilt with openldap-2.3.x
+
+* Tue Feb 08 2005 Buchan Milne <bgmilne@linux-mandrake.com> 1.4.3-4mdk
+- rebuild for ldap2.2_7
+
+* Fri Feb  4 2005 Oden Eriksson <oeriksson@mandrakesoft.com> 1.4.3-3mdk
+- rebuilt against new openldap libs
+
+* Wed Jan 14 2004 Franck Villaume <fvill@freesurf.fr> 1.4.3-2mdk
+- BuildRequires : openldap-devel
+
+* Mon Jan 12 2004 Lenny Cartier <lenny@mandrakesoft.com> 1.4.3-1mdk
+- 1.4.3
+
+* Fri Dec 12 2003 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 1.4.2-1mdk
+- 1.4.2
+- do not rm -rf $RPM_BUILD_ROOT in %%prep
+- no explicit library dependencies
+- add missing files to %%files
+- fix devel provides
+- fix devel requires
+
+* Thu Apr 03 2003 Lenny Cartier <lenny@mandrakesoft.com 1.3.99a-1mdk
+- 1.3.99a
+
+* Sat Feb 01 2003 Lenny Cartier <lenny@mandrakesoft.com 1.3.12-2mdk
+- rebuild
+
+* Thu Aug 22 2002 Lenny Cartier <lenny@mandrakesoft.com> 1.3.12-1mdk
+- from Franck Martin <franck@sopac.org> :
+	- first release for mdk8.2
