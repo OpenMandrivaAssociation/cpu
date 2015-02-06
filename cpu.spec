@@ -1,6 +1,6 @@
 %define	name	cpu
 %define version 1.4.3
-%define release %mkrel 10
+%define release 11
 
 %define	lib_major 0
 %define	libname %mklibname %name %lib_major
