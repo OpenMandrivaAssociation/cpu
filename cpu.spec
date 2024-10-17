@@ -18,7 +18,7 @@ Patch1: 	cpu-1.4.3-fix_open_usage.diff
 Patch2:		cpu-1.4.3-fix_makefile.diff
 Patch3:		cpu-1.4.3-linkage.patch
 License:	GPLv2+
-Url:		http://cpu.sourceforge.net
+Url:		https://cpu.sourceforge.net
 Group:		System/Base
 BuildRequires:	openldap-devel
 Conflicts:	%{_lib}cpu0-devel < 1.4.3-8
