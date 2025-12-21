@@ -20,6 +20,11 @@ Patch3:		cpu-1.4.3-linkage.patch
 License:	GPLv2+
 Url:		https://cpu.sourceforge.net
 Group:		System/Base
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	openldap-devel
 Conflicts:	%{_lib}cpu0-devel < 1.4.3-8
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
